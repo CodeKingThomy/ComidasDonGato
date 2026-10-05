@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comidas Don Gato</title><link rel="stylesheet" href="style.css"></head><body>
+<header><h1>🐱 Comidas Don Gato</h1><button id="openCart">🛒 Carrito (<span id="count">0</span>)</button></header>
+<main><div id="promo" class="banner" hidden></div><div id="closed" class="banner closed" hidden>😴 Ahora estamos cerrados. Podés ver el menú, los pedidos se habilitan en nuestro horario.</div><div id="notice"></div><div id="cats" class="chips"></div><div id="grid" class="grid"></div></main>
+
+<dialog id="cartDlg"><h2>Tu pedido</h2><div id="cartItems"></div><h3>Total: <span id="total">$0</span></h3>
+<div style="display:flex;gap:8px;justify-content:flex-end"><button class="sec" onclick="cartDlg.close()">Seguir comprando</button><button id="goCheckout">Continuar</button></div></dialog>
+
+<dialog id="coDlg"><h2>Tus datos</h2><div id="coMsg"></div>
+<label>Nombre</label><input id="name"><label>Teléfono</label><input id="phone" type="tel">
+<label>¿Cómo lo querés?</label><div class="pay" id="dlv"><label><input type="radio" name="dt" value="envio" checked style="width:auto"> 🛵 Envío</label><label><input type="radio" name="dt" value="retiro" style="width:auto"> 🏪 Retiro</label></div><div id="envioBox"><label>Zona</label><select id="zone"></select><label>Dirección de entrega</label><input id="address"></div><div id="retiroBox" class="msg" hidden></div><label>Aclaraciones (opcional)</label><textarea id="notes" rows="2"></textarea>
+<label>Forma de pago</label><div class="pay"><label><input type="radio" name="pm" value="efectivo" checked style="width:auto"> 💵 Efectivo</label>
+<label><input type="radio" name="pm" value="mercadopago" style="width:auto"> 💳 Mercado Pago</label></div>
+<div class="msg" id="sum"></div><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px"><button class="sec" onclick="coDlg.close()">Volver</button><button id="confirm">Confirmar pedido</button></div></dialog>
+<script src="app.js"></script></body></html>

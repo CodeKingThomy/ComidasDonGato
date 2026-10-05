@@ -1,0 +1,21 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin · Don Gato</title><link rel="stylesheet" href="style.css"></head><body>
+<header><h1>🐱 Panel Don Gato</h1><button onclick="sessionStorage.clear();location.reload()">Salir</button></header>
+<main><div class="tabs"><button data-t="orders" class="on">📦 Pedidos</button><button data-t="products">🍽️ Comidas</button><button data-t="promos">🎉 Promos</button><button data-t="local">⚙️ Local</button><button data-t="report">📊 Ventas</button></div>
+<section id="orders"></section>
+<section id="products" hidden>
+<form id="pf" class="panel"><h3>Cargar comida</h3><div class="cols">
+<div><label>Nombre</label><input name="name" required></div><div><label>Precio ($)</label><input name="price" type="number" min="0" required></div>
+<div><label>Cantidad disponible</label><input name="stock" type="number" min="0" required></div><div><label>Foto</label><input name="image" type="file" accept="image/jpeg,image/png,image/webp"></div></div>
+<label>Categoría (ej: Minutas, Pastas, Postres)</label><input name="category"><label style="color:var(--ink)"><input type="checkbox" name="featured" style="width:auto"> ⭐ Comida del día</label><label>Descripción</label><input name="description"><br><button>Guardar comida</button></form><div id="plist"></div></section>
+<section id="promos" hidden>
+<form id="prf" class="panel"><h3>Nueva promo</h3><div class="cols"><div><label>Nombre (ej: Fin de semana)</label><input name="name" required></div>
+<div><label>Descuento %</label><input name="discount_percent" type="number" min="1" max="90" required></div>
+<div><label>Desde (opcional)</label><input name="start_date" type="date"></div><div><label>Hasta (opcional)</label><input name="end_date" type="date"></div></div>
+<label style="color:var(--ink)"><input type="checkbox" name="weekend_only" style="width:auto"> Solo sábados y domingos</label><br><button>Crear promo</button></form><div id="prlist"></div></section><section id="local" hidden>
+<div class="panel"><h3>Estado del local</h3><select id="mode"><option value="auto">Automático (según horarios)</option><option value="open">Forzar ABIERTO</option><option value="closed">Forzar CERRADO</option></select><div id="openNow" class="msg"></div>
+<label>Dirección para retiro</label><input id="pickup"><h3>Horarios</h3><div id="sched"></div><br><button id="saveSet">Guardar</button></div>
+<form id="zf" class="panel"><h3>Zonas de envío</h3><div class="cols"><div><label>Zona / barrio</label><input name="name" required></div><div><label>Costo ($)</label><input name="cost" type="number" min="0" required></div></div><br><button>Agregar zona</button><div id="zlist"></div></form>
+<p class="msg">Si no cargás ninguna zona, la tienda ofrece solo retiro.</p></section>
+<section id="report" hidden><div class="panel"><label>Período</label><select id="days"><option value="1">Hoy</option><option value="7" selected>Últimos 7 días</option><option value="30">Últimos 30 días</option></select></div><div id="rep"></div></section></main>
+<script src="admin.js"></script></body></html>
